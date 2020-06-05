@@ -8,7 +8,10 @@ public class BowlingTest {
 
     @Test
     void should_score_0_when_bowling_round_given_two_throws_break_down_0() {
-        
+        Game game = new Game();
+        game.playRound(0, 0);
+
+        assertEquals(0, game.getRoundScore(1));
     }
 
     @Test

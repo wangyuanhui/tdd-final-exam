@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Game {
 
-    private List<List<Integer>> rounds;
+    private final List<List<Integer>> rounds;
 
     public Game() {
         rounds = new ArrayList<>();
@@ -46,7 +46,7 @@ public class Game {
     }
 
     private int getNext2Num(int index) {
-        List<Integer> nums = new ArrayList();
+        List<Integer> nums = new ArrayList<>();
         if (rounds.get(index).size() > 1) {
             nums.add(rounds.get(index).get(1));
         }

@@ -36,6 +36,9 @@ public class Game {
     }
 
     private int getNextNum(int index) {
+        if (rounds.get(index).size() > 1) {
+            return rounds.get(index).get(1);
+        }
         if (index + 1 < rounds.size()) {
             return rounds.get(index + 1).get(0);
         }
@@ -43,16 +46,22 @@ public class Game {
     }
 
     private int getNext2Num(int index) {
-        int value = 0;
+        List<Integer> nums = new ArrayList();
+        if (rounds.get(index).size() > 1) {
+            nums.add(rounds.get(index).get(1));
+        }
         if (index + 1 < rounds.size()) {
-            value += rounds.get(index + 1).get(0);
+            nums.add(rounds.get(index + 1).get(0));
             if (rounds.get(index + 1).size() > 1) {
-                value += rounds.get(index + 1).get(1);
+                nums.add(rounds.get(index + 1).get(1));
             } else if (index + 2 < rounds.size()) {
-                value += rounds.get(index + 2).get(0);
+                nums.add(rounds.get(index + 2).get(0));
             }
         }
-        return value;
+        if (nums.size() == 3) {
+            nums.remove(2);
+        }
+        return sum(nums);
     }
 
     private boolean isStrike(List<Integer> round) {
